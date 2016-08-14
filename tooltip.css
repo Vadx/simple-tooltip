@@ -1,0 +1,99 @@
+/* tooltip.css */
+.tooltip, [data-tooltip] { position: relative; display: inline-block;}
+.tooltip:before, .tooltip:after, [data-tooltip]:before, [data-tooltip]:after {
+    position: absolute;
+    /*-webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);*/
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1000000;
+    pointer-events: none;
+    -webkit-transition: 0.3s ease;
+       -moz-transition: 0.3s ease;
+            transition: 0.3s ease;
+   }
+  .tooltip:hover:before,
+  .tooltip:hover:after,
+  .tooltip:focus:before,
+  .tooltip:focus:after,
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after,
+  [data-tooltip]:focus:before,
+  [data-tooltip]:focus:after {
+    visibility: visible;
+    opacity: 1;
+}
+  .tooltip:before, [data-tooltip]:before {
+	    content: '';
+	    position: absolute;
+	    background: transparent;
+	    border: 6px solid transparent;
+	    z-index: 1000001;
+	}
+  .tooltip:after, [data-tooltip]:after {
+	    content: attr(data-tooltip);
+	    background: #383838;
+	    color: white;
+	    text-shadow: 0 -1px 0px black;
+	    padding: 8px 10px;
+	    font-size: 12px;
+	    line-height: 12px;
+	    white-space: nowrap;
+	    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+
+      -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+              border-radius: 3px;
+   }
+/**
+	 * 	1) tooltip--top
+	 * 	2) tooltip--bottom
+	 * 	3) tooltip--left
+	 * 	4) tooltip--right
+*/
+.tooltip--top:before {border-top-color: #383838;}
+.tooltip--bottom:before {border-bottom-color: #383838;}
+.tooltip--left:before { border-left-color: #383838;}
+.tooltip--right:before { border-right-color: #383838; }
+
+/* 1) top tooltip */
+.tooltip--top:before {margin-bottom: -12px;}
+.tooltip--top:before,
+.tooltip--top:after {
+  left: 50%;
+  bottom: 100%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+/* 2) bottom tooltip */
+.tooltip--bottom:before { margin-top: -12px;}
+.tooltip--bottom:before,
+.tooltip--bottom:after {
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+/* 3) right tooltip */
+.tooltip--right:before { margin-left: -12px; margin-bottom: -6px; }
+.tooltip--right:after { margin-bottom: -14px; }
+.tooltip--right:before, .tooltip--right:after { left: 100%; bottom: 50%; }
+.tooltip--right:hover:after, .tooltip--right:hover:before, .tooltip--right:focus:after, .tooltip--right:focus:before {
+  /*-webkit-transform: translateX(8px);
+     -moz-transform: translateX(8px);
+          transform: translateX(8px);*/
+}
+/* 4) left tooltip */
+.tooltip--left:before { margin-right: -12px; margin-bottom: -6px; }
+.tooltip--left:after { margin-bottom: -14px; }
+.tooltip--left:before, .tooltip--left:after { right: 100%; bottom: 50%; }
+.tooltip--left:hover:after, .tooltip--left:hover:before, .tooltip--left:focus:after, .tooltip--left:focus:before {
+  /*-webkit-transform: translateX(-8px);
+     -moz-transform: translateX(-8px);
+          transform: translateX(-8px);*/
+}
